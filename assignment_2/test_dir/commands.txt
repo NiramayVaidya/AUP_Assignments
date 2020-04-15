@@ -1,0 +1,14 @@
+sudo -u \#0 mkdir test_dir (owner and group is root)
+sudo chmod +t test_dir
+cd test_dir
+vi test_1 (owner and group is niramay)
+sudo -u \#1001 vi test_2 (owner and group is temp)
+sudo -u \#1002 vi test_3 (onwer and group is test)
+
+by doing this, every user can read other's files but can't write to them
+any user can create a file and only a file's owner can delete that file, no-one else
+
+how does setting sticky bit for the test_dir and making it's owner and group as root help?
+used on directories, indicates that in order to rename or delete a file in that directory a user must both have write permissions to the directory and one of the following must be true-
+user owns the file/user owns the directory/user is the superuser
+when sticky bit is set, only the owner of a file/directory can delete
